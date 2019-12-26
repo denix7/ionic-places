@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlacesService } from '../places/places.service';
 import { Place } from '../models/place.model';
+
+import {AlertController} from '@ionic/angular'
 
 @Component({
   selector: 'app-place-detail',
@@ -11,7 +13,8 @@ import { Place } from '../models/place.model';
 export class PlaceDetailPage implements OnInit {
   place:Place;
 
-  constructor(private activatedRoute:ActivatedRoute, private placesService:PlacesService) { }
+  constructor(private activatedRoute:ActivatedRoute, private placesService:PlacesService,
+              private router:Router, private alertCtrl:AlertController) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe( paramMap => {
@@ -22,9 +25,27 @@ export class PlaceDetailPage implements OnInit {
     })
   }
 
-  deletePlace()
+  async deletePlace()
   {
-    this.placesService.deletePlace(this.place.id);
-    // console.log(this.placesService.getPlaces());
+    //crea el alert
+    const alertElement = await this.alertCtrl.create({
+      header: 'Seguro que desea eliminar el lugar?',
+      message: 'Esta opcion no tiene retorno',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.placesService.deletePlace(this.place.id);
+            this.router.navigate(['/places']);
+          }
+        }
+      ]
+    }); 
+    //muestra el alert
+    await alertElement.present();
   }
 }
