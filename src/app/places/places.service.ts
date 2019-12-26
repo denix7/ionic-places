@@ -8,7 +8,7 @@ export class PlacesService {
 
   private places : Place[] = [
     {
-      id: 1,
+      id: "1",
       name: "Eifel tower",
       country: "Francia",
       city: "Paris",
@@ -17,13 +17,22 @@ export class PlacesService {
       comments: ['awesome place', 'incredible!']
     },
     {
-      id: 2,
+      id: "2",
       name: "Chichen Itza",
       country: "Mexico",
       city: "yucatan",
       year: '1546',
       imgURL: "https://cdn.getyourguide.com/img/tour_img-1191926-145.jpg",
       comments: ['wonderfull pic!', 'lol', 'amazing!!!']
+    },
+    {
+      id: "3",
+      name: "Chichen Itza",
+      country: "Mexico",
+      city: "yucatan",
+      year: '1546',
+      imgURL: "https://cdn.getyourguide.com/img/tour_img-1191926-145.jpg",
+      comments: []
     }
   ]
 
@@ -34,10 +43,11 @@ export class PlacesService {
     return [...this.places]; //ES6 crea copia 
   }
 
-  getPlace(placeId)
+  getPlace(placeId: string)
   {
     return {
       ...this.places.find(place => {
+        console.warn(place)
         return place.id === placeId;
       })
     }
@@ -46,7 +56,7 @@ export class PlacesService {
   addPlace(name:string, country:string, city:string, year:string, imgURL:string, )
   {
     this.places.push({
-      id:this.places.length+1,
+      id:this.places.length+1 + "",
       name,
       country,
       city,
@@ -56,7 +66,7 @@ export class PlacesService {
     });
   }
 
-  deletePlace(placeId:number)
+  deletePlace(placeId:string)
   {
     this.places = this.places.filter(place => {
       return place.id !== placeId;

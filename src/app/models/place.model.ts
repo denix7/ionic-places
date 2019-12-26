@@ -1,6 +1,6 @@
 export interface Place
 {
-    id:Number,
+    id:string,
     name:string,
     country:string,
     city:string,
