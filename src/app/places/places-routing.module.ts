@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: PlacesPage
+  },
+  {
+    path: 'place-add',
+    loadChildren: () => import('./place-add/place-add.module').then( m => m.PlaceAddPageModule)
   }
 ];
 

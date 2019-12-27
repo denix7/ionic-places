@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService } from './places.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-places',
@@ -10,7 +11,7 @@ export class PlacesPage implements OnInit {
 
   places = [];
   
-  constructor(private placeService: PlacesService) { }
+  constructor(private placeService: PlacesService, private router:Router) { }
   
   ngOnInit() {
     this.places = this.placeService.getPlaces();
@@ -19,5 +20,11 @@ export class PlacesPage implements OnInit {
   ionViewWillEnter()
   {
     this.places = this.placeService.getPlaces();
+  }
+
+  addNewPlace()
+  {
+    this.router.navigate(['/new-place'])
+    console.warn("works!")
   }
 }

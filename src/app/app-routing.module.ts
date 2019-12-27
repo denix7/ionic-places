@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: '', redirectTo: 'places', pathMatch: 'full' },
+  { path: 'places', loadChildren: () => import('./places/places.module').then( m => m.PlacesPageModule)},
   {
     path: 'places',
     children: [
@@ -18,6 +18,11 @@ const routes: Routes = [
     ],
     
   },
+  {
+    path: 'new-place',
+    loadChildren: () => import('./places/place-add/place-add.module').then( m=> m.PlaceAddPageModule)
+  },
+  { path: '**', redirectTo: 'places', pathMatch: 'full' },
 ];
 
 @NgModule({

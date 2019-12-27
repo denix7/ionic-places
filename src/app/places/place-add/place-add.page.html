@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar nuevo lugar</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref = "/places"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-content>
+          <ion-input type="text" placeholder="Nombre" [(ngModel)]="this.name"></ion-input>
+          <ion-input type="text" placeholder="Pais" [(ngModel)]="this.country"></ion-input>
+          <ion-input type="text" placeholder="Ciudad" [(ngModel)]="this.city"></ion-input>
+          <ion-input type="text" placeholder="Año" [(ngModel)]="this.year"></ion-input>
+          <ion-input type="text" placeholder="Url" [(ngModel)]="this.url"></ion-input>
+
+          <ion-button color="warning" (click)="savePlace()">Guardar</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
