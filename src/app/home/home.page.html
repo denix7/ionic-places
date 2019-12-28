@@ -1,34 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Hello world
+      Posts
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <!-- <ion-tabs>
-        <ion-tab-bar slot="bottom">
-          <ion-tab-button tab="home">
-            <ion-icon name="calendar"></ion-icon>
-            <ion-label>Home</ion-label>
-            <ion-badge>6</ion-badge>
-          </ion-tab-button>
-      
-          <ion-tab-button tab="new-place">
-            <ion-icon name="New place"></ion-icon>
-            <ion-label>Speakers</ion-label>
-          </ion-tab-button>
-      
-          <ion-tab-button tab="places">
-            <ion-icon name="map"></ion-icon>
-            <ion-label>Places</ion-label>
-          </ion-tab-button>
-      
-          <ion-tab-button tab="about">
-            <ion-icon name="information-circle"></ion-icon>
-            <ion-label>About</ion-label>
-          </ion-tab-button>
-        </ion-tab-bar>
-      </ion-tabs> -->
+  <ion-card *ngFor="let post of posts">
+      <ion-card-header>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        <ion-card-title>{{post.title}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{post.content}}
+      </ion-card-content>
+    </ion-card>
 </ion-content>

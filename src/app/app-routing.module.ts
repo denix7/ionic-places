@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'new-place',
     loadChildren: () => import('./places/place-add/place-add.module').then( m=> m.PlaceAddPageModule)
   },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m=> m.HomePageModule)
+  },
   { path: '**', redirectTo: 'places', pathMatch: 'full' },
 ];
 

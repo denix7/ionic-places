@@ -1,12 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FakeApiService } from '../services/fake-api.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
-  constructor() {}
+  posts = [];
+  constructor(private _fakeApi:FakeApiService) {}
 
+  ngOnInit()
+  {
+    this._fakeApi.getPosts()
+      .subscribe((data) => {
+        this.posts = data;
+        console.warn(this.posts);
+      });
+  }
 }
